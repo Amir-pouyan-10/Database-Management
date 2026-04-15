@@ -8,6 +8,15 @@ import { MyBooks } from "./components/MyBooks";
 import { HistoryPage } from "./components/HistoryPage";
 import { SettingsPage } from "./components/SettingsPage";
 
+import AdminLayout from "./components/admin/AdminLayout";
+import AdminDashboard from "./components/admin/AdminDashboard";
+import AdminBooks from "./components/admin/AdminBooks";
+import AdminUsers from "./components/admin/AdminUsers";
+import AdminTransactions from "./components/admin/AdminTransactions";
+import LibrarianDashboard from "./components/librarian/LibrarianDashboard";
+import LibrarianCheckouts from "./components/librarian/LibrarianCheckouts";
+import LibrarianBooks from "./components/librarian/LibrarianBooks";
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -64,8 +73,17 @@ export default function App() {
             </DashboardLayout>
           }
         />
+
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/users" element={<AdminUsers />} />
+        <Route path="/admin/books" element={<AdminBooks />} />
+        <Route path="/admin/transactions" element={<AdminTransactions />} />
+        <Route path="/librarian" element={<LibrarianDashboard />} />
+        <Route path="/librarian/checkouts" element={<LibrarianCheckouts />} />
+        <Route path="/librarian/books" element={<LibrarianBooks />} />
         
         {/* Redirect any unknown routes to login */}
+        <Route path="/test-admin" element={<div className="p-10 text-3xl font-bold">TEST ADMIN PAGE</div>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
