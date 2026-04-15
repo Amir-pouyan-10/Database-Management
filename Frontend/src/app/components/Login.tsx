@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -14,10 +14,14 @@ export function Login() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     // Mock login - in real app would validate credentials
-    if (email && password) {
-      navigate("/dashboard");
-    }
-  };
+  if (email === "admin@test.com") {
+  navigate("/admin");
+} else if (email === "librarian@test.com") {
+  navigate("/librarian");
+} else {
+  navigate("/dashboard");
+}
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-4">
@@ -55,7 +59,7 @@ export function Login() {
                   <BookOpen className="size-8 text-white" />
                 </div>
                 <div>
-                  <CardTitle className="text-2xl">LibraryHub</CardTitle>
+                  <CardTitle className="text-2xl">Welcome Back TEST</CardTitle>
                 </div>
               </div>
               <CardTitle className="text-2xl">Welcome Back</CardTitle>
@@ -96,6 +100,15 @@ export function Login() {
                 </div>
                 <Button type="submit" className="w-full h-11 bg-indigo-600 hover:bg-indigo-700">
                   Sign In
+                </Button>
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full h-11 mt-2"
+                  onClick={() => navigate("/admin")}
+                  >
+                  Go to Admin Test Page
                 </Button>
               </form>
               <div className="mt-6 text-center text-sm text-gray-600">
